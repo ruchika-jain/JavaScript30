@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background: url(https://image.winudf.com/v2/image/Y29tLkRyZWFtV2FsbHBhcGVycy5EcnVtczAxX3Z4YjZjbzg5/screen-0.jpg?h=355&fakeurl=1&type=.jpg) bottom center;
   background-size: cover;
 }
 
@@ -28,7 +28,7 @@ body,html {
   width: 10rem;
   text-align: center;
   color: white;
-  background: rgba(0,0,0,0.4);
+  background: /*rgba(0,0,0,0.4);*/crimson;
   text-shadow: 0 0 .5rem black;
 }
 
