@@ -7,6 +7,51 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvas=document.querySelector('#draw');
+  const ctxt=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  ctxt.strokeStyle='BADA55';
+  ctxt.lineJoin='round';
+  ctxt.lineCap='round';
+  ctxt.lineWidth=10;
+  //ctxt.globalCompositeOperation='multiply';
+  let isDrawing=false;
+  let lastX=0;
+  let lastY=0;
+  let hue=0;
+  let direction=true;
+  function draw(e){
+    if(!isDrawing)return;
+    ctxt.strokeStyle=`hsl(${hue},100%,50%)`;
+    ctxt.beginPath();
+    ctxt.moveTo(lastX,lastY);
+    ctxt.lineTo(e.offsetX,e.offsetY);
+    ctxt.stroke();
+    [lastX,lastY]=[e.offsetX,e.offsetY];
+    hue++;
+    if(hue==360){
+      hue=0;
+    }
+    if(ctxt.lineWidth>100||ctxt.lineWidth<=1){
+      direction = !direction;
+    }
+    if(direction){
+      ctxt.lineWidth++;
+    }else{
+       ctxt.lineWidth--;
+    }
+  }
+  canvas.addEventListener('mousemove',draw);
+  canvas.addEventListener('mousedown',function(e){
+    lastX=e.offsetX;
+    lastY=e.offsetY;
+    isDrawing=true
+  });
+  canvas.addEventListener('mouseup',()=>isDrawing=false);
+  canvas.addEventListener('mouseout',()=>isDrawing=false);
+
+
 </script>
 
 <style>
