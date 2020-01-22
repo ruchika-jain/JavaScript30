@@ -18,29 +18,43 @@
     }
 
     // Regular
-
+    console.log('Hello');
     // Interpolated
-
+    console.log('Interpolated %s','string');
     // Styled
-
+    console.log('%c Styled text within JS','font-size:20px; color:red;');
     // warning!
-
+    console.warn('Warn');
     // Error :|
+    console.error('Oops');
 
     // Info
-
-    // Testing
-
+    console.info('User info');
+    // Testing Assertion throws if something is false
+    console.assert(1===2,'Its false!');
     // clearing
-
+    //console.clear();
     // Viewing DOM Elements
-
+    const p=document.querySelector('p');
+    console.log(p);
+    console.dir(p);
     // Grouping together
-
+    dogs.forEach(dog=>{
+      console.group(`${dog.name}`); //also groupCollapsed
+      console.log(`The name is ${dog.name}`);
+      console.log(`The name is ${dog.age}`);
+      console.groupEnd(`${dog.name}`);
+    })
     // counting
-
+    console.count('p');
     // timing
-
+    console.time('fetching data');
+    fetch('https://api.github.com/users/ruchika-jain')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
   </script>
 </body>
 </html>
