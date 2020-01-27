@@ -6,7 +6,22 @@
   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
+  <h3>Type the secret code on keyboard to see magic ;)</h3>
 <script>
+  const pressed=[];
+  const secret='ruchi';
+  window.addEventListener('keyup',e=>{
+    console.log(e.key);
+    pressed.push(e.key);
+    pressed.splice(-secret.length-1,pressed.length-secret.length);
+    
+    if(pressed.join('').includes(secret)){
+      console.log('Secret code typed!');
+      cornify_add();
+    }
+    console.log(pressed);
+
+  });
 </script>
 </body>
 </html>
