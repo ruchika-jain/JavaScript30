@@ -8,12 +8,24 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 10;
+    let age2 = age;
+    //age,age2 10
+    age2 = 15;
+    //age 10, age2 15
 
     // Let's say we have an array
+    //array change is by ref
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
-
+    let team = players;
+    team[3] = 'Lux';
+    //team,players both change cuz team is only a ref to players
     // and we want to make a copy of it.
-
+    //use slice to make a copy1
+    const copyPlayers = players.slice();
+    copyPlayers[2] = 'Newperson';
+    const copy2 = [].concat(players);
+    //Now original players array is untouched
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
@@ -31,9 +43,10 @@
     // or create a new array and concat the old one in
 
     // or use the new ES6 Spread
-
+    const copy3 = [...players];
     // now when we update it, the original one isn't changed
-
+    const copy4 = Array.from(players);
+    //obj also have like array as ref
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
@@ -45,9 +58,12 @@
     // and think we make a copy:
 
     // how do we take a copy instead?
-
+    const obcopy1 = Object.assign({},person,{phone = 99886}); //empty obj, original obj,new props
+    //Object.assign does only one level deep
+    //newobj.subobj.property will be reflected in both if done in one
     // We will hopefully soon see the object ...spread
-
+    //cheat way for deep copy
+    const objCopy2 = JSON.parse(JSON.stringify(obj)); //convert to string and parse it back to obj
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
   </script>
