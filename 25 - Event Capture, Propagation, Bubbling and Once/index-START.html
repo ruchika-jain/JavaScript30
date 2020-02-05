@@ -42,7 +42,17 @@
 
 <button></button>
 <script>
-
+  const divs = document.querySelectorAll('div');
+  function logText(e) {
+    console.log(this.classList.value);
+    e.stopPropaagation(); //stop bubbling up
+  }
+  //capture:true means run it in Dom on way down rather than up. Default is false, i.e from bottom to up (three, two, one)
+  //it captures all from top and starts firing from bottom called bubbling
+  divs.forEach(ele => ele.addEventListener('click', logText, {
+    capture: false,
+    once: true //unbind itself or remove the event listener after first time can be used for checkout options
+  }));
 </script>
 </body>
 </html>
